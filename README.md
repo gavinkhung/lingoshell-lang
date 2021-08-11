@@ -8,6 +8,7 @@ LingoShell is a programming language that allows you to write in different human
 ## Supported Human Languages
 
 - English
+- Mandarin (Traditional)
 
 ## Usage/Examples
 
@@ -20,9 +21,12 @@ PRINT("HELLO WORLD)
 Switching human languages with the LANG variable
 
 ```
-VAR A = 5;
-VAR LANG = "on";
-VAR_ONE B = 5;
+# Hello World in different human languages
+VAR LANG = "en"
+PRINT("Hello")
+
+VAR LANG = "zh"
+打印("你好")
 ```
 
 ## Demo

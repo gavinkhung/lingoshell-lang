@@ -1,2 +1,6 @@
-# This is a very useful piece of software
-PRINT("Greetings universe!")
+# Hello World in different human languages
+VAR LANG = "en"
+PRINT("Hello")
+
+VAR LANG = "zh"
+打印("你好")

@@ -2,10 +2,10 @@ from lingoshell.basic import run
 
 
 def start(filename):
-    with open(filename, 'r') as file:
+    with open(filename, "r") as file:
         text = file.read()
     if len(text) == 0:
-        print(f"RUNTIME ERROR: file \"{filename}\" is empty")
+        print(f'RUNTIME ERROR: file "{filename}" is empty')
         return
     result, error = run("<stdin>", text)
 

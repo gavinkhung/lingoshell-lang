@@ -19,14 +19,24 @@ global_symbol_table.set("FALSE", Number.false)
 global_symbol_table.set("TRUE", Number.true)
 global_symbol_table.set("MATH_PI", Number.math_PI)
 
+# en
 global_symbol_table.set("PRINT", BuiltInFunction.print)
-global_symbol_table.set("PRINT_RET", BuiltInFunction.print_ret)
 global_symbol_table.set("INPUT", BuiltInFunction.input)
 global_symbol_table.set("INPUT_INT", BuiltInFunction.input_int)
 global_symbol_table.set("APPEND", BuiltInFunction.append)
 global_symbol_table.set("POP", BuiltInFunction.pop)
 global_symbol_table.set("EXTEND", BuiltInFunction.extend)
 global_symbol_table.set("LEN", BuiltInFunction.len)
+
+# zh
+global_symbol_table.set("\u6253\u5370", BuiltInFunction.print)
+global_symbol_table.set("\u8f38\u5165", BuiltInFunction.input)
+global_symbol_table.set("\u9644\u52a0", BuiltInFunction.append)
+global_symbol_table.set("\u62ff\u8d70", BuiltInFunction.pop)
+global_symbol_table.set("\u4f38\u5c55", BuiltInFunction.extend)
+global_symbol_table.set("\u9577\u5ea6", BuiltInFunction.len)
+
+
 global_symbol_table.set("RUN", BuiltInFunction.run)
 
 
