@@ -1,4 +1,4 @@
 import lingoshell
 
-lingoshell.start()
+lingoshell.start("main.txt")
 # lingoshell.update_languages()

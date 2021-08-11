@@ -465,36 +465,6 @@ class BuiltInFunction(BaseFunction):
 
     execute_input_int.arg_names = []
 
-    def execute_clear(self, exec_ctx):
-        os.system("cls" if os.name == "nt" else "cls")
-        return RTResult().success(Number.null)
-
-    execute_clear.arg_names = []
-
-    def execute_is_number(self, exec_ctx):
-        is_number = isinstance(exec_ctx.symbol_table.get("value"), Number)
-        return RTResult().success(Number.true if is_number else Number.false)
-
-    execute_is_number.arg_names = ["value"]
-
-    def execute_is_string(self, exec_ctx):
-        is_number = isinstance(exec_ctx.symbol_table.get("value"), String)
-        return RTResult().success(Number.true if is_number else Number.false)
-
-    execute_is_string.arg_names = ["value"]
-
-    def execute_is_list(self, exec_ctx):
-        is_number = isinstance(exec_ctx.symbol_table.get("value"), List)
-        return RTResult().success(Number.true if is_number else Number.false)
-
-    execute_is_list.arg_names = ["value"]
-
-    def execute_is_function(self, exec_ctx):
-        is_number = isinstance(exec_ctx.symbol_table.get("value"), BaseFunction)
-        return RTResult().success(Number.true if is_number else Number.false)
-
-    execute_is_function.arg_names = ["value"]
-
     def execute_append(self, exec_ctx):
         list_ = exec_ctx.symbol_table.get("list")
         value = exec_ctx.symbol_table.get("value")
@@ -643,11 +613,6 @@ BuiltInFunction.print = BuiltInFunction("print")
 BuiltInFunction.print_ret = BuiltInFunction("print_ret")
 BuiltInFunction.input = BuiltInFunction("input")
 BuiltInFunction.input_int = BuiltInFunction("input_int")
-BuiltInFunction.clear = BuiltInFunction("clear")
-BuiltInFunction.is_number = BuiltInFunction("is_number")
-BuiltInFunction.is_string = BuiltInFunction("is_string")
-BuiltInFunction.is_list = BuiltInFunction("is_list")
-BuiltInFunction.is_function = BuiltInFunction("is_function")
 BuiltInFunction.append = BuiltInFunction("append")
 BuiltInFunction.pop = BuiltInFunction("pop")
 BuiltInFunction.extend = BuiltInFunction("extend")
