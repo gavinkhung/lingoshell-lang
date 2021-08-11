@@ -1,3 +1,4 @@
 import lingoscript
 
-lingoscript.run()
+lingoscript.start()
+# lingoscript.update_languages()

@@ -53,7 +53,7 @@ while-expr  : KEYWORD:WHILE expr KEYWORD:THEN
               statement
             | (NEWLINE statements KEYWORD:END)
 
-func-def    : KEYWORD:FUN IDENTIFIER?
+func-def    : KEYWORD:METHOD IDENTIFIER?
               LPAREN (IDENTIFIER (COMMA IDENTIFIER)*)? RPAREN
               (ARROW expr)
             | (NEWLINE statements KEYWORD:END)

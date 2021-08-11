@@ -1,2 +1,2 @@
-from lingoscript.shell import run
+from lingoscript.shell import start
 from lingoscript.sync import update_languages

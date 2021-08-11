@@ -109,7 +109,7 @@ class Parser:
                 InvalidSyntaxError(
                     self.current_tok.pos_start,
                     self.current_tok.pos_end,
-                    "Expected 'RETURN', 'CONTINUE', 'BREAK', 'VAR', 'IF', 'FOR', 'WHILE', 'FUN', int, float, identifier, '+', '-', '(', '[' or 'NOT'",
+                    "Expected 'RETURN', 'CONTINUE', 'BREAK', 'VAR', 'IF', 'FOR', 'WHILE', 'METHOD', int, float, identifier, '+', '-', '(', '[' or 'NOT'",
                 )
             )
         return res.success(expr)
@@ -159,7 +159,7 @@ class Parser:
                 InvalidSyntaxError(
                     self.current_tok.pos_start,
                     self.current_tok.pos_end,
-                    "Expected 'VAR', 'IF', 'FOR', 'WHILE', 'FUN', int, float, identifier, '+', '-', '(', '[' or 'NOT'",
+                    "Expected 'VAR', 'IF', 'FOR', 'WHILE', 'METHOD', int, float, identifier, '+', '-', '(', '[' or 'NOT'",
                 )
             )
 
@@ -187,7 +187,7 @@ class Parser:
                 InvalidSyntaxError(
                     self.current_tok.pos_start,
                     self.current_tok.pos_end,
-                    "Expected int, float, identifier, '+', '-', '(', '[', 'IF', 'FOR', 'WHILE', 'FUN' or 'NOT'",
+                    "Expected int, float, identifier, '+', '-', '(', '[', 'IF', 'FOR', 'WHILE', 'METHOD' or 'NOT'",
                 )
             )
 
@@ -237,7 +237,7 @@ class Parser:
                         InvalidSyntaxError(
                             self.current_tok.pos_start,
                             self.current_tok.pos_end,
-                            "Expected ')', 'VAR', 'IF', 'FOR', 'WHILE', 'FUN', int, float, identifier, '+', '-', '(', '[' or 'NOT'",
+                            "Expected ')', 'VAR', 'IF', 'FOR', 'WHILE', 'METHOD', int, float, identifier, '+', '-', '(', '[' or 'NOT'",
                         )
                     )
 
@@ -325,7 +325,7 @@ class Parser:
                 return res
             return res.success(while_expr)
 
-        elif tok.matches(TT_KEYWORD, "FUN"):
+        elif tok.matches(TT_KEYWORD, "METHOD"):
             func_def = res.register(self.func_def())
             if res.error:
                 return res
@@ -335,7 +335,7 @@ class Parser:
             InvalidSyntaxError(
                 tok.pos_start,
                 tok.pos_end,
-                "Expected int, float, identifier, '+', '-', '(', '[', IF', 'FOR', 'WHILE', 'FUN'",
+                "Expected int, float, identifier, '+', '-', '(', '[', IF', 'FOR', 'WHILE', 'METHOD'",
             )
         )
 
@@ -366,7 +366,7 @@ class Parser:
                     InvalidSyntaxError(
                         self.current_tok.pos_start,
                         self.current_tok.pos_end,
-                        "Expected ']', 'VAR', 'IF', 'FOR', 'WHILE', 'FUN', int, float, identifier, '+', '-', '(', '[' or 'NOT'",
+                        "Expected ']', 'VAR', 'IF', 'FOR', 'WHILE', 'METHOD', int, float, identifier, '+', '-', '(', '[' or 'NOT'",
                     )
                 )
 
@@ -698,12 +698,12 @@ class Parser:
     def func_def(self):
         res = ParseResult()
 
-        if not self.current_tok.matches(TT_KEYWORD, "FUN"):
+        if not self.current_tok.matches(TT_KEYWORD, "METHOD"):
             return res.failure(
                 InvalidSyntaxError(
                     self.current_tok.pos_start,
                     self.current_tok.pos_end,
-                    f"Expected 'FUN'",
+                    f"Expected 'METHOD'",
                 )
             )
 

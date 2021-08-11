@@ -66,13 +66,14 @@ class Interpreter:
             return res
 
         if var_name == "LANG":
-            # print('<built-in variable LANG> is always lowercase')
             value.value = value.value.lower()
 
             if not value.value in LANGUAGE_KEYWORDS:
-                print(f'Language "{value.value}" not found. EN will be used instead.')
+                print(f"Language \"{value.value}\" not found. EN will be used instead.")
                 value.value = "en"
                 return res.success(value)
+            else:
+                print(f"Language switched to \"{value.value}\"")
 
         context.symbol_table.set(var_name, value)
         return res.success(value)

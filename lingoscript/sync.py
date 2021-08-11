@@ -3,4 +3,25 @@ import json
 
 
 def update_languages():
-    pass
+    try:
+        with open("lingoscript/languages.csv", mode="r") as csv_file:
+            keywords = []
+            language_keywords = {}
+
+            csv_reader = csv.DictReader(csv_file)
+
+            for row in csv_reader:
+                keywords.extend(list(row.values())[2:])
+                current_language = dict(row)
+                print(current_language)
+                language_keywords[row["Language ISO 639-1 Code"]] = current_language
+
+            with open("lingoscript/keywords.json", "w") as keywords_file:
+                json.dump(keywords, keywords_file)
+
+            with open(
+                "lingoscript/language_keywords.json", "w"
+            ) as language_keywords_file:
+                json.dump(language_keywords, language_keywords_file)
+    except Exception as e:
+        print("Runtime Error:", str(e))
