@@ -1,3 +1,5 @@
+import json
+
 TT_INT = "INT"
 TT_FLOAT = "FLOAT"
 TT_STRING = "STRING"
@@ -24,85 +26,57 @@ TT_ARROW = "ARROW"
 TT_NEWLINE = "NEWLINE"
 TT_EOF = "EOF"
 
-KEYWORDS = [
-    # Lang 1
-    "VAR",
-    "AND",
-    "OR",
-    "NOT",
-    "IF",
-    "ELIF",
-    "ELSE",
-    "FOR",
-    "TO",
-    "STEP",
-    "WHILE",
-    "FUN",
-    "THEN",
-    "END",
-    "RETURN",
-    "CONTINUE",
-    "BREAK",
-    # Lang 2
-    "VAR_TWO",
-    "AND_TWO",
-    "OR_TWO",
-    "NOT_TWO",
-    "IF_TWO",
-    "ELIF_TWO",
-    "ELSE_TWO",
-    "FOR_TWO",
-    "TO_TWO",
-    "STEP_TWO",
-    "WHILE_TWO",
-    "FUN_TWO",
-    "THEN_TWO",
-    "END_TWO",
-    "RETURN_TWO",
-    "CONTINUE_TWO",
-    "BREAK_TWO",
-]
+try:
+    with open("./lingoscript/keywords.json") as f:
+        KEYWORDS = json.load(f)
+except Exception:
+    print("Runtime Error: Could not find saved languages. Will use EN.")
+    KEYWORDS = [
+        "VAR",
+        "AND",
+        "OR",
+        "NOT",
+        "IF",
+        "ELIF",
+        "ELSE",
+        "FOR",
+        "TO",
+        "STEP",
+        "WHILE",
+        "FUN",
+        "THEN",
+        "END",
+        "RETURN",
+        "CONTINUE",
+        "BREAK",
+    ]
 
-LANGUAGE_KEYWORD = {
-    "en": {
-        "VAR": "VAR",
-        "AND": "AND",
-        "OR": "OR",
-        "NOT": "NOT",
-        "IF": "IF",
-        "ELIF": "ELIF",
-        "ELSE": "ELSE",
-        "FOR": "FOR",
-        "TO": "TO",
-        "STEP": "STEP",
-        "WHILE": "WHILE",
-        "FUN": "FUN",
-        "THEN": "THEN",
-        "END": "END",
-        "RETURN": "RETURN",
-        "CONTINUE": "CONTINUE",
-        "BREAK": "BREAK",
-    },
-    "two": { 
-        "VAR": "VAR_TWO",
-        "AND": "AND_TWO",
-        "OR": "OR_TWO",
-        "NOT": "NOT_TWO",
-        "IF": "IF_TWO",
-        "ELIF": "ELIF_TWO",
-        "ELSE": "ELSE_TWO",
-        "FOR": "FOR_TWO",
-        "TO": "TO_TWO",
-        "STEP": "STEP_TWO",
-        "WHILE": "WHILE_TWO",
-        "FUN": "FUN_TWO",
-        "THEN": "THEN_TWO",
-        "END": "END_TWO",
-        "RETURN": "RETURN_TWO",
-        "CONTINUE": "CONTINUE_TWO",
-        "BREAK": "BREAK_TWO",
-    },
-}
+try:
+    with open("./lingoscript/language_keywords.json") as f:
+        LANGUAGE_KEYWORDS = json.load(f)
+except Exception:
+    print("Runtime Error: Could not find saved languages. Will use EN.")
+    LANGUAGE_KEYWORDS = {
+        "en": {
+            "VAR": "VAR",
+            "AND": "AND",
+            "OR": "OR",
+            "NOT": "NOT",
+            "IF": "IF",
+            "ELIF": "ELIF",
+            "ELSE": "ELSE",
+            "FOR": "FOR",
+            "TO": "TO",
+            "STEP": "STEP",
+            "WHILE": "WHILE",
+            "FUN": "FUN",
+            "THEN": "THEN",
+            "END": "END",
+            "RETURN": "RETURN",
+            "CONTINUE": "CONTINUE",
+            "BREAK": "BREAK",
+        }
+    }
 
 
 class Token:
@@ -121,8 +95,10 @@ class Token:
         self.lang = lang
 
     def matches(self, type_, value):
-        if self.lang is not None and self.lang in LANGUAGE_KEYWORD:
-            return self.type == type_ and self.value == LANGUAGE_KEYWORD[self.lang][value]
+        if self.lang is not None and self.lang in LANGUAGE_KEYWORDS:
+            return (
+                self.type == type_ and self.value == LANGUAGE_KEYWORDS[self.lang][value]
+            )
         return self.type == type_ and self.value == value
 
     def __repr__(self):
