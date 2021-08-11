@@ -12,6 +12,8 @@ from lingoscript.parser import Parser
 from lingoscript.inter import Interpreter
 
 global_symbol_table = SymbolTable()
+global_symbol_table.set("LANG", String.EN)
+
 global_symbol_table.set("NULL", Number.null)
 global_symbol_table.set("FALSE", Number.false)
 global_symbol_table.set("TRUE", Number.true)
@@ -34,8 +36,11 @@ global_symbol_table.set("RUN", BuiltInFunction.run)
 
 
 def run(fn, text):
+    context = Context("<program>")
+    context.symbol_table = global_symbol_table
+
     # Generate tokens
-    lexer = Lexer(fn, text)
+    lexer = Lexer(fn, text, context)
     tokens, error = lexer.make_tokens()
     if error:
         return None, error
@@ -48,8 +53,6 @@ def run(fn, text):
 
     # Run program
     interpreter = Interpreter()
-    context = Context("<program>")
-    context.symbol_table = global_symbol_table
     result = interpreter.visit(ast.node, context)
 
     return result.value, result.error

@@ -65,6 +65,10 @@ class Interpreter:
         if res.should_return():
             return res
 
+        if var_name == "LANG":
+            # print('<built-in variable LANG> is always lowercase')
+            value.value = value.value.lower()
+
         context.symbol_table.set(var_name, value)
         return res.success(value)
 

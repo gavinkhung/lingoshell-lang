@@ -5,9 +5,10 @@ from lingoscript.tokens import *
 
 
 class Lexer:
-    def __init__(self, fn, text):
+    def __init__(self, fn, text, context):
         self.fn = fn
         self.text = text
+        self.context = context
         self.pos = Position(-1, 0, -1, fn, text)
         self.current_char = None
         self.advance()
@@ -29,10 +30,6 @@ class Lexer:
             elif self.current_char in ";\n":
                 tokens.append(Token(TT_NEWLINE, pos_start=self.pos))
                 self.advance()
-            elif self.current_char in DIGITS:
-                tokens.append(self.make_number())
-            elif self.current_char in LETTERS:
-                tokens.append(self.make_identifier())
             elif self.current_char == '"':
                 tokens.append(self.make_string())
             elif self.current_char == "+":
@@ -75,11 +72,18 @@ class Lexer:
             elif self.current_char == ",":
                 tokens.append(Token(TT_COMMA, pos_start=self.pos))
                 self.advance()
+            elif self.current_char in DIGITS:
+                tokens.append(self.make_number())
             else:
-                pos_start = self.pos.copy()
-                char = self.current_char
-                self.advance()
-                return [], IllegalCharError(pos_start, self.pos, "'" + char + "'")
+                tokens.append(self.make_identifier())
+
+            # elif self.current_char in LETTERS:
+            #     tokens.append(self.make_identifier())
+            # else:
+            #     pos_start = self.pos.copy()
+            #     char = self.current_char
+            #     self.advance()
+            #     return [], IllegalCharError(pos_start, self.pos, "'" + char + "'")
 
         tokens.append(Token(TT_EOF, pos_start=self.pos))
         return tokens, None
@@ -130,12 +134,23 @@ class Lexer:
         id_str = ""
         pos_start = self.pos.copy()
 
-        while self.current_char != None and self.current_char in LETTERS_DIGITS + "_":
+        # while self.current_char != None and self.current_char in LETTERS_DIGITS + "_":
+        while self.current_char != None and not self.current_char in RESERVED_LETTERS:
             id_str += self.current_char
             self.advance()
 
-        tok_type = TT_KEYWORD if id_str in KEYWORDS else TT_IDENTIFIER
-        return Token(tok_type, id_str, pos_start, self.pos)
+        # tok_type = TT_KEYWORD if id_str in KEYWORDS else TT_IDENTIFIER
+        if id_str in KEYWORDS:
+            if len(self.context.symbol_table.get("LANG").value) != 0:
+                return Token(
+                    TT_KEYWORD,
+                    id_str,
+                    pos_start,
+                    self.pos,
+                    self.context.symbol_table.get("LANG").value,
+                )
+            return Token(TT_KEYWORD, id_str, pos_start, self.pos)
+        return Token(TT_IDENTIFIER, id_str, pos_start, self.pos)
 
     def make_minus_or_arrow(self):
         tok_type = TT_MINUS

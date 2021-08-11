@@ -243,6 +243,14 @@ class String(Value):
         return f'"{self.value}"'
 
 
+String.AR = String("ar")
+String.ZH = String("zh")
+String.EN = String("en")
+String.FR = String("fr")
+String.RU = String("ru")
+String.ES = String("es")
+
+
 class List(Value):
     def __init__(self, elements):
         super().__init__()
