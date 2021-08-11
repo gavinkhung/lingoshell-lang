@@ -1,4 +1,4 @@
-from lingoscript.strings_with_arrows import *
+from lingoshell.strings_with_arrows import *
 
 
 class Error:

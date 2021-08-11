@@ -1,7 +1,7 @@
-from lingoscript.constants import *
-from lingoscript.errors import IllegalCharError, ExpectedCharError
-from lingoscript.position import Position
-from lingoscript.tokens import *
+from lingoshell.constants import *
+from lingoshell.errors import IllegalCharError, ExpectedCharError
+from lingoshell.position import Position
+from lingoshell.tokens import *
 
 
 class Lexer:

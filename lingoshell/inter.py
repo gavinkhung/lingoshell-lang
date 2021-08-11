@@ -1,7 +1,7 @@
-from lingoscript.errors import RTError
-from lingoscript.results import RTResult
-from lingoscript.tokens import *
-from lingoscript.values import Number, String, List, Function
+from lingoshell.errors import RTError
+from lingoshell.results import RTResult
+from lingoshell.tokens import *
+from lingoshell.values import Number, String, List, Function
 
 
 class Interpreter:
@@ -69,11 +69,11 @@ class Interpreter:
             value.value = value.value.lower()
 
             if not value.value in LANGUAGE_KEYWORDS:
-                print(f"Language \"{value.value}\" not found. EN will be used instead.")
+                print(f'Language "{value.value}" not found. EN will be used instead.')
                 value.value = "en"
                 return res.success(value)
             else:
-                print(f"Language switched to \"{value.value}\"")
+                print(f'Language switched to "{value.value}"')
 
         context.symbol_table.set(var_name, value)
         return res.success(value)

@@ -1,4 +1,4 @@
-import lingoscript
+import lingoshell
 
-lingoscript.start()
-# lingoscript.update_languages()
+lingoshell.start()
+# lingoshell.update_languages()

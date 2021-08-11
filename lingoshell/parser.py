@@ -1,9 +1,9 @@
-from lingoscript.errors import InvalidSyntaxError
-from lingoscript.nodes import *
-from lingoscript.results import ParseResult
+from lingoshell.errors import InvalidSyntaxError
+from lingoshell.nodes import *
+from lingoshell.results import ParseResult
 
 
-from lingoscript.tokens import *
+from lingoshell.tokens import *
 
 
 class Parser:

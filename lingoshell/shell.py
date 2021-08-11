@@ -1,4 +1,4 @@
-from lingoscript.basic import run
+from lingoshell.basic import run
 
 
 def start():

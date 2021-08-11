@@ -4,7 +4,7 @@ import json
 
 def update_languages():
     try:
-        with open("lingoscript/languages.csv", mode="r") as csv_file:
+        with open("lingoshell/languages.csv", mode="r") as csv_file:
             keywords = []
             language_keywords = {}
 
@@ -16,11 +16,11 @@ def update_languages():
                 print(current_language)
                 language_keywords[row["Language ISO 639-1 Code"]] = current_language
 
-            with open("lingoscript/keywords.json", "w") as keywords_file:
+            with open("lingoshell/keywords.json", "w") as keywords_file:
                 json.dump(keywords, keywords_file)
 
             with open(
-                "lingoscript/language_keywords.json", "w"
+                "lingoshell/language_keywords.json", "w"
             ) as language_keywords_file:
                 json.dump(language_keywords, language_keywords_file)
     except Exception as e:

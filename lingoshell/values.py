@@ -1,11 +1,11 @@
 import os
 import math
 
-from lingoscript.context import Context
-from lingoscript.results import RTResult
-from lingoscript.errors import RTError
+from lingoshell.context import Context
+from lingoshell.results import RTResult
+from lingoshell.errors import RTError
 
-import lingoscript.basic
+import lingoshell.basic
 
 
 class Value:
@@ -372,7 +372,7 @@ class Function(BaseFunction):
 
     def execute(self, args):
         res = RTResult()
-        from lingoscript.inter import Interpreter
+        from lingoshell.inter import Interpreter
 
         interpreter = Interpreter()
         exec_ctx = self.generate_new_context()
@@ -622,7 +622,7 @@ class BuiltInFunction(BaseFunction):
                 )
             )
 
-        _, error = lingoscript.basic.run(fn, script)
+        _, error = lingoshell.basic.run(fn, script)
 
         if error:
             return RTResult().failure(

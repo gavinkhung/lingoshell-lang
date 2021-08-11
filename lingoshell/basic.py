@@ -1,15 +1,15 @@
-from lingoscript.context import Context
-from lingoscript.position import Position
-from lingoscript.values import *
-from lingoscript.tokens import *
-from lingoscript.constants import *
-from lingoscript.errors import *
-from lingoscript.results import *
-from lingoscript.nodes import *
+from lingoshell.context import Context
+from lingoshell.position import Position
+from lingoshell.values import *
+from lingoshell.tokens import *
+from lingoshell.constants import *
+from lingoshell.errors import *
+from lingoshell.results import *
+from lingoshell.nodes import *
 
-from lingoscript.lexer import Lexer
-from lingoscript.parser import Parser
-from lingoscript.inter import Interpreter
+from lingoshell.lexer import Lexer
+from lingoshell.parser import Parser
+from lingoshell.inter import Interpreter
 
 global_symbol_table = SymbolTable()
 global_symbol_table.set("LANG", String.EN)

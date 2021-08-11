@@ -27,7 +27,7 @@ TT_NEWLINE = "NEWLINE"
 TT_EOF = "EOF"
 
 try:
-    with open("./lingoscript/keywords.json") as f:
+    with open("./lingoshell/keywords.json") as f:
         KEYWORDS = json.load(f)
 except Exception:
     print("Runtime Error: Could not find saved languages. Will use EN.")
@@ -52,7 +52,7 @@ except Exception:
     ]
 
 try:
-    with open("./lingoscript/language_keywords.json") as f:
+    with open("./lingoshell/language_keywords.json") as f:
         LANGUAGE_KEYWORDS = json.load(f)
 except Exception:
     print("Runtime Error: Could not find saved languages. Will use EN.")
