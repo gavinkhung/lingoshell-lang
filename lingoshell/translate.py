@@ -2,38 +2,14 @@ import importlib.resources
 import json
 
 try:
-    with importlib.resources.open_text("lingoshell", "keywords.json") as f:
-        KEYWORDS = json.load(f)
-except Exception:
-    print("Runtime Error: Could not find saved languages. Will use EN.")
-    KEYWORDS = [
-        "VAR",
-        "AND",
-        "OR",
-        "NOT",
-        "IF",
-        "ELIF",
-        "ELSE",
-        "FOR",
-        "TO",
-        "STEP",
-        "WHILE",
-        "METHOD",
-        "THEN",
-        "END",
-        "RETURN",
-        "CONTINUE",
-        "BREAK",
-    ]
-
-try:
     with importlib.resources.open_text("lingoshell", "language_keywords.json") as f:
         LANGUAGE_KEYWORDS = json.load(f)
 except Exception:
     print("Runtime Error: Could not find saved languages. Will use EN.")
     LANGUAGE_KEYWORDS = {
         "en": {
-            "VAR": "VAR",
+            "Timestamp": "8/10/2021 21:05:09",
+            "Language ISO 639-1 Code": "en",
             "AND": "AND",
             "OR": "OR",
             "NOT": "NOT",
@@ -50,7 +26,14 @@ except Exception:
             "RETURN": "RETURN",
             "CONTINUE": "CONTINUE",
             "BREAK": "BREAK",
-        }
+            "VAR": "VAR",
+            "PRINT": "PRINT",
+            "INPUT": "INPUT",
+            "APPEND": "APPEND",
+            "POP": "POP",
+            "EXTEND": "EXTEND",
+            "LEN": "LEN",
+        },
     }
 
 
@@ -62,12 +45,14 @@ def translate_file(filename, output_filename, base_language, target_language):
         return
 
     base_language_keywords = LANGUAGE_KEYWORDS[base_language]
-    target_language_keywords = LANGUAGE_KEYWORDS[target_language] 
+    target_language_keywords = LANGUAGE_KEYWORDS[target_language]
 
     for base_language_key in base_language_keywords:
-        text = text.replace(base_language_keywords[base_language_key], target_language_keywords[base_language_key])
+        text = text.replace(
+            base_language_keywords[base_language_key],
+            target_language_keywords[base_language_key],
+        )
 
-    with open(output_filename, 'a+') as f:
+    with open(output_filename, "a+") as f:
         f.write(text)
         print(text)
-    

@@ -1,2 +1,2 @@
 # Hello World Program
-PRINT("Hello World!")
+打印("Hello World!")

@@ -1,0 +1,5 @@
+# This will execute the code in the loop 6 times
+FOR i = 0 TO 6 THEN
+	PRINT(i)
+END
+

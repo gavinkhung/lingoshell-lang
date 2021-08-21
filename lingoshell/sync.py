@@ -12,7 +12,9 @@ def update_languages():
 
             for row in csv_reader:
                 keywords.extend(list(row.values())[2:-7])
+
                 current_language = dict(row)
+                current_language.pop("AUTHOR", None)
                 print(current_language)
                 language_keywords[row["Language ISO 639-1 Code"]] = current_language
 
