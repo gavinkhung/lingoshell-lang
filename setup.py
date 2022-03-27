@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-VERSION = "0.0.3"
+VERSION = "0.0.4"
 DESCRIPTION = "The LingoScript programming language"
 LONG_DESCRIPTION = (
     "A programming language that allows you to write in different human languages"
@@ -11,7 +11,7 @@ setup(
     name="lingoshell",
     version=VERSION,
     author="Gav H",
-    author_email="codergavinh@gmail.com",
+    author_email="hi@lingoshell.com",
     description=DESCRIPTION,
     long_description_content_type="text/markdown",
     long_description=LONG_DESCRIPTION,
