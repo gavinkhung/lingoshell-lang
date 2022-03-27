@@ -1,0 +1,12 @@
+BLOQUE print_sum()
+  ALMACENE sum = 0;
+  
+  CUANDO i < 10 LUEGO
+    ALMACENE i = i + 1;
+    sum += i;
+  BORDE
+
+  ESCRIBA(sum);
+BORDE
+
+print_sum();

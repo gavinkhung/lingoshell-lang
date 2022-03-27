@@ -1,0 +1,7 @@
+# This will execute the code in the loop 10 times
+ALMACENE i = 0
+CUANDO i < 10 LUEGO
+  ALMACENE i = i + 1
+  ESCRIBA(i)
+BORDE
+

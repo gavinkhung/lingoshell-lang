@@ -1,7 +1,7 @@
 # This will execute the code in the loop 10 times
 VAR i = 0
-WHILE i < 10 THEN
+ALORS_QUE i < 10 ALORS
   VAR i = i + 1
-  PRINT(i)
-END
+  IMPRIME(i)
+FIN
 

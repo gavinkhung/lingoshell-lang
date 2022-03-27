@@ -1,0 +1,7 @@
+# This will execute the code in the loop 10 times
+儲存 i = 0
+當時 i < 10 之後
+  儲存 i = i + 1
+  打印(i)
+完成
+

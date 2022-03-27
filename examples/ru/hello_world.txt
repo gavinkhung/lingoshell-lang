@@ -1,0 +1,2 @@
+# Hello World Program
+написать("Hello World!")

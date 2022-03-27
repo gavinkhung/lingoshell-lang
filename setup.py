@@ -18,8 +18,6 @@ setup(
     packages=find_packages(),
     install_requires=[],
     keywords=["language"],
-    classifiers=[
-        "Intended Audience :: Developers",
-    ],
+    classifiers=["Intended Audience :: Developers",],
     package_data={"": ["*.json"]},
 )

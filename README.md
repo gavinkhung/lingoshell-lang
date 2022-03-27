@@ -18,13 +18,13 @@ LingoShell is a programming language that allows you to write in different human
 
 Hello World Program
 
-```
+```ls
 PRINT("HELLO WORLD)
 ```
 
 Switching human languages with the LANG variable
 
-```
+```ls
 # Hello World in different human languages
 VAR LANG = "en"
 PRINT("Hello")

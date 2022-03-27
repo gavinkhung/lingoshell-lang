@@ -1,0 +1,12 @@
+METHOD print_sum()
+  VAR sum = 0;
+  
+  WHILE i < 10 THEN
+    VAR i = i + 1;
+    sum += i;
+  END
+
+  PRINT(sum);
+END
+
+print_sum();

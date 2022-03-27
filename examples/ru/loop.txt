@@ -1,0 +1,7 @@
+# This will execute the code in the loop 10 times
+сохранить i = 0
+когда i < 10 так
+  сохранить i = i + 1
+  написать(i)
+граница
+

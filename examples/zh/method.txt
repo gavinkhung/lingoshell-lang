@@ -1,0 +1,12 @@
+物品 print_sum()
+  儲存 sum = 0;
+  
+  當時 i < 10 之後
+    儲存 i = i + 1;
+    sum += i;
+  完成
+
+  打印(sum);
+完成
+
+print_sum();

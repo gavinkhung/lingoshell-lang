@@ -105,8 +105,11 @@ class Number(Value):
     def dived_by(self, other):
         if isinstance(other, Number):
             if other.value == 0:
-                return None, RTError(
-                    other.pos_start, other.pos_end, "Division by zero", self.context
+                return (
+                    None,
+                    RTError(
+                        other.pos_start, other.pos_end, "Division by zero", self.context
+                    ),
                 )
 
             return Number(self.value / other.value).set_context(self.context), None
@@ -268,11 +271,14 @@ class List(Value):
                 new_list.elements.pop(other.value)
                 return new_list, None
             except:
-                return None, RTError(
-                    other.pos_start,
-                    other.pos_end,
-                    "Element at this index could not be removed from list because index is out of bounds",
-                    self.context,
+                return (
+                    None,
+                    RTError(
+                        other.pos_start,
+                        other.pos_end,
+                        "Element at this index could not be removed from list because index is out of bounds",
+                        self.context,
+                    ),
                 )
         else:
             return None, Value.illegal_operation(self, other)
@@ -290,11 +296,14 @@ class List(Value):
             try:
                 return self.elements[other.value], None
             except:
-                return None, RTError(
-                    other.pos_start,
-                    other.pos_end,
-                    "Element at this index could not be retrieved from list because index is out of bounds",
-                    self.context,
+                return (
+                    None,
+                    RTError(
+                        other.pos_start,
+                        other.pos_end,
+                        "Element at this index could not be retrieved from list because index is out of bounds",
+                        self.context,
+                    ),
                 )
         else:
             return None, Value.illegal_operation(self, other)

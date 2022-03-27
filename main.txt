@@ -4,3 +4,9 @@ PRINT("Hello")
 
 VAR LANG = "zh"
 打印("你好")
+
+VAR i = 0
+WHILE i < 10 THEN
+  VAR i = i + 1
+  PRINT(i)
+END

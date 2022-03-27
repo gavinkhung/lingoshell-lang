@@ -1,0 +1,12 @@
+BLOC print_sum()
+  VAR sum = 0;
+  
+  ALORS_QUE i < 10 ALORS
+    VAR i = i + 1;
+    sum += i;
+  FIN
+
+  IMPRIME(sum);
+FIN
+
+print_sum();
