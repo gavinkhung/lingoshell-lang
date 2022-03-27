@@ -9,6 +9,10 @@ LingoShell is a programming language that allows you to write in different human
 
 - English
 - Mandarin (Traditional)
+- Spanish
+- French
+- Arabic
+- Russian
 
 ## Usage/Examples
 
